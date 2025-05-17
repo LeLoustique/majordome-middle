@@ -2,14 +2,12 @@ package spring.ai.majordome.spring_ai_majordome.controllers;
 
 import org.springframework.ai.huggingface.HuggingfaceChatModel;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import spring.ai.majordome.spring_ai_majordome.services.ChatService;
 
 @RestController
 @RequestMapping("/api/chat")
+@CrossOrigin(origins ="https://sping-ai-majordome.onrender.com")
 public class ChatController {
 
     private final ChatService chatService;
