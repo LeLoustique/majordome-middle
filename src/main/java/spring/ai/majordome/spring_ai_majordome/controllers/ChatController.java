@@ -6,7 +6,7 @@ import spring.ai.majordome.spring_ai_majordome.services.ChatService;
 
 @RestController
 @RequestMapping("/api/chat")
-@CrossOrigin(origins ="https://sping-ai-majordome.onrender.com")
+@CrossOrigin(origins ="*")
 public class ChatController {
 
     private final ChatService chatService;
