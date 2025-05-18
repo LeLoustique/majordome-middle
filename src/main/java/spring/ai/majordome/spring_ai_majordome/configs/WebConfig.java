@@ -9,7 +9,10 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:5173") // ou ton domaine React déployé
+                .allowedOrigins(
+                        "http://localhost:3000",
+                        "https://majordome.netlify.app/"
+                ) // ou ton domaine React déployé
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
     }
 }
