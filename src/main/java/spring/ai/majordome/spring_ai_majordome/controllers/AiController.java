@@ -3,8 +3,8 @@ package spring.ai.majordome.spring_ai_majordome.controllers;
 import org.springframework.ai.huggingface.HuggingfaceChatModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
+import spring.ai.majordome.spring_ai_majordome.models.ChatRequest;
+import spring.ai.majordome.spring_ai_majordome.models.ChatResponse;
 
 @RestController
 public class AiController {
@@ -17,7 +17,8 @@ public class AiController {
     }
 
     @GetMapping("/ai/generate")
-    public Map<String, Object> generate(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
-        return Map.of("generation", this.chatModel.call(message));
+    public ChatResponse generate(@RequestBody ChatRequest request) {
+        String result = this.chatModel.call(request.getMessage());
+        return new ChatResponse(result);
     }
 }
