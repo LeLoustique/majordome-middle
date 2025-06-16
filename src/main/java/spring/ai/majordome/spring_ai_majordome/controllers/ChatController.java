@@ -2,6 +2,8 @@ package spring.ai.majordome.spring_ai_majordome.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import spring.ai.majordome.spring_ai_majordome.models.ChatRequest;
+import spring.ai.majordome.spring_ai_majordome.models.ChatResponseDto;
 import spring.ai.majordome.spring_ai_majordome.services.ChatService;
 
 @RestController
@@ -17,7 +19,8 @@ public class ChatController {
     }
 
     @PostMapping
-    public String chat(@RequestBody String message) {
-        return chatService.generateResponse(message);
+    public ChatResponseDto chat(@RequestBody ChatRequest chatRequest) {
+        String response = chatService.generateResponse(chatRequest.getMessage());
+        return new ChatResponseDto(response);
     }
 }
